@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 
@@ -17,11 +16,10 @@ public class JsonResponse<T> {
     private String message;
     private int status;
 
-    @Nullable
     private T data;
 
     @Builder
-    private JsonResponse(LocalDateTime timestamp, HttpStatus httpStatus, @Nullable T data) {
+    private JsonResponse(LocalDateTime timestamp, HttpStatus httpStatus, T data) {
         this.timestamp = timestamp;
         this.message = httpStatus.getReasonPhrase();
         this.status = httpStatus.value();
